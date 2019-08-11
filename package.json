@@ -1,6 +1,6 @@
 {
     "name": "mtgdb",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "A lambda skill providing APIs to wrap competitive MTG metadata",
     "main": "index.js",
     "scripts": {
