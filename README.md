@@ -8,6 +8,10 @@ Models for aggregate data will be available in this readme at a later date.
 
 ## Latest Updates
 
+# v0.1.1 - 2019-08-17
+
+* added matches table on existing addMatchResult query
+
 # v0.1.0 - 2019-08-11
 
 * created wrappers for aggregateStats db interface, integrated with API gateway
