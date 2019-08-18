@@ -12,7 +12,8 @@ const EMPTY_MATCH_RECORD = {
     result101: { N: "0" },
     result011: { N: "0" },
     result111: { N: "0" },
-    otherResult: { N: "0" }
+    otherResult: { N: "0" },
+    totalMatches: { N: "0" }
 };
 
 const NO_GAME = {
@@ -165,7 +166,8 @@ function buildMatchStats({
         result12: matchRecords.result12,
         result011: matchRecords.result011,
         result111: matchRecords.result111,
-        otherResult: matchRecords.otherResult
+        otherResult: matchRecords.otherResult,
+        totalMatches: { N: `${ parseInt(existingMatchRecord.totalMatches.N) + 1 }` }
     };
 }
 

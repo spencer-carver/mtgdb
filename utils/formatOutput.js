@@ -18,6 +18,7 @@ function formatDeckOutput({ stats }) {
         result011: stats.result011.N,
         result111: stats.result111.N,
         otherResult: stats.otherResult.N,
+        totalMatches: stats.totalMatches.N,
         game1: formatGameOutput(stats.game1.M),
         game2: formatGameOutput(stats.game2.M),
         game3: formatGameOutput(stats.game3.M)

@@ -12,7 +12,10 @@ const COMMANDS = {
 function unknownCommandHandler() {
     console.log("invalidCommand Error");
 
-    throw new Error("Invalid Command");
+    const invalidCommand = new Error("Invalid Command");
+    invalidCommand.status = 404;
+
+    throw invalidCommand;
 }
 
 exports.handler = async (event, context) => {
@@ -36,7 +39,7 @@ exports.handler = async (event, context) => {
     } catch (error) {
         return {
             isBase64Encoded: false,
-            statusCode: 500,
+            statusCode: error.status || 500,
             headers: {},
             body: JSON.stringify({
                 success: false,

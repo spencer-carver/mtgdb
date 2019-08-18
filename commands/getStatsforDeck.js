@@ -1,4 +1,4 @@
-const aggregateStatsDB = require("../utils/aggregateStatsDB");
+const aggregateStatsDB = require("../db/aggregateStatsDB");
 const formatOutput = require("../utils/formatOutput");
 
 async function getStatsForDeck({ dciNumber, deckName }) {
