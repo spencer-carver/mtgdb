@@ -1,55 +1,38 @@
-const AWS = require("aws-sdk");
-const dynamo = new AWS.DynamoDB();
+const {
+    DynamoDBClient,
+    PutItemCommand,
+    GetItemCommand,
+    QueryCommand,
+    DeleteItemCommand
+} = require("@aws-sdk/client-dynamodb");
+
+const dynamo = new DynamoDBClient({ region: "us-east-1" });
 
 async function insertItem(params) {
     console.log("inserting item", JSON.stringify(params));
-    return new Promise(function(resolve, reject) {
-        dynamo.putItem(params, function (err, data) {
-            if (err) {
-                return reject(err);
-            }
-    
-            return resolve(data.Item);
-        });
-    });
+    const command = new PutItemCommand(params);
+    const response = await dynamo.send(command);
+    return response.Attributes;
 }
 
 async function queryItem(params) {
-    return new Promise(function(resolve, reject) {
-        dynamo.getItem(params, function (err, data) {
-            if (err) {
-                return reject(err);
-            }
-
-            return resolve(data.Item);
-        });
-    });
+    const command = new GetItemCommand(params);
+    const response = await dynamo.send(command);
+    return response.Item;
 }
 
 async function queryItems(params) {
-    return new Promise(function(resolve, reject) {
-        dynamo.query(params, function(err, data) {
-            if (err) {
-                return reject(err);
-            }
-
-            return resolve(data.Items);
-        });
-    });
+    const command = new QueryCommand(params);
+    const response = await dynamo.send(command);
+    return response.Items;
 }
 
 // function updateItem() { }
 
 async function deleteItem(params) {
-    return new Promise(function(resolve, reject) {
-        dynamo.deleteItem(params, function (err, data) {
-            if (err) {
-                return reject(err);
-            }
-
-            return resolve(data.Item);
-        });
-    });
+    const command = new DeleteItemCommand(params);
+    const response = await dynamo.send(command);
+    return response.Attributes;
 }
 
 module.exports = {

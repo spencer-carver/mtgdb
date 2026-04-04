@@ -1,29 +1,31 @@
 {
     "name": "mtgdb",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "A lambda skill providing APIs to wrap competitive MTG metadata",
     "main": "index.js",
     "scripts": {
-      "build": "rm -f mtgdb.zip && find . | egrep \"\\.(js)$\" | zip -@ mtgdb.zip",
-      "deploy": "aws lambda update-function-code --function-name mtgdb --zip-file fileb://mtgdb.zip"
+        "build": "rm -f mtgdb.zip && zip -r mtgdb.zip . -x '*.git*' 'mtgdb.zip' '*.md'",
+        "deploy": "aws lambda update-function-code --function-name mtgdb --zip-file fileb://mtgdb.zip"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/spencer-carver/mtgdb.git"
+        "type": "git",
+        "url": "git+https://github.com/spencer-carver/mtgdb.git"
     },
     "keywords": [
-      "lambda",
-      "MTG",
-      "Magic"
+        "lambda",
+        "MTG",
+        "Magic"
     ],
     "author": "Spencer Carver",
     "license": "ISC",
     "bugs": {
-      "url": "https://github.com/spencer-carver/mtgdb/issues"
+        "url": "https://github.com/spencer-carver/mtgdb/issues"
     },
     "homepage": "https://github.com/spencer-carver/mtgdb#readme",
+    "engines": {
+        "node": "24.x"
+    },
     "dependencies": {
-      "aws-sdk": "^2.503.0"
+        "@aws-sdk/client-dynamodb": "^3.1024.0"
     }
-  }
-  
+}

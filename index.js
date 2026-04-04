@@ -43,7 +43,7 @@ exports.handler = async (event, context) => {
             headers: {},
             body: JSON.stringify({
                 success: false,
-                errorMessage: error
+                errorMessage: error.message || String(error)
             })
         }
     }
